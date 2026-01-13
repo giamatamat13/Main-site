@@ -1,37 +1,354 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tamat & Giamat - פרויקטים</title>
-  <link rel="stylesheet" href="style.css">
-  <div id="bthn" lang="he"></div>
-  <script>
-   (function () {
-     var script = document.createElement("script");
-     script.type = "text/javascript";
-     script.src = "https://bringthemhomenow.net/1.3.0/hostages-ticker.js";
-     script.setAttribute(
-       "integrity",
-       "sha384-MmP7bD5QEJWvJccg9c0lDnn3LjjqQWDiRCxRV+NU8hij15icuwb29Jfw1TqJwuSv"
-     );
-     script.setAttribute("crossorigin", "anonymous");
-     document.getElementsByTagName("head")[0].appendChild(script);
-   })();
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamat & Giamat | מתכנתים</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .developers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .dev-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .dev-name {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .dev-role {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .projects-section {
+            margin-top: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .project-desc {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-section {
+            text-align: center;
+            margin: 80px 0 40px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Tamat & Giamat</h1>
-    <p>פרויקטים</p>
-  </header>
-  <main>
-    <div class="projects">
-      <a href="map-to-globe.html"><div class="card">🌍 הופך מפה לגלובוס</div></a>
+    <div class="container">
+        <header>
+            <h1>Tamat & Giamat</h1>
+            <p class="subtitle">זוג מתכנתי Vibe Coding - יוצרים קסם עם HTML, CSS ו-JavaScript</p>
+        </header>
+
+        <div class="developers">
+            <div class="dev-card">
+                <div class="dev-name">Tamat</div>
+                <div class="dev-role">Vibe Coding Specialist & AI Expert</div>
+                <p>מתכנת עם תחושה מיוחדת לקוד. מומחה בינוע מלאכותי - מעבר לתכנות! יוצר חוויות אינטראקטיביות עם HTML, CSS ו-JavaScript.</p>
+                <div class="skills">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">AI</span>
+                    <span class="skill-tag">Vibe Coding</span>
+                </div>
+            </div>
+
+            <div class="dev-card">
+                <div class="dev-name">Giamat</div>
+                <div class="dev-role">HTML Master & Python Developer</div>
+                <p>המומחה ל-HTML! חי ונושם HTML, CSS ו-JavaScript. מתכנת גם ב-Python. ביחד עם Tamat - הצמד המושלם ל-Vibe Coding.</p>
+                <div class="skills">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Vibe Coding</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="projects-section">
+            <h2 class="section-title">הפרויקטים שלנו</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <div class="project-title">🚀 CodeFlow</div>
+                    <p class="project-desc">
+                        פלטפורמת ניהול פרויקטים לצוותי פיתוח עם אינטגרציה ל-Git, ניהול משימות אוטומטי וממשק משתמש אינטואיטיבי.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">WebSocket</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🎨 DesignHub</div>
+                    <p class="project-desc">
+                        כלי שיתוף פעולה בזמן אמת למעצבים ומפתחים, עם תמיכה בגרסאות, תגובות והדמיות אינטראקטיביות.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Vue.js</span>
+                        <span class="tech-badge">Firebase</span>
+                        <span class="tech-badge">Canvas API</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">📊 DataViz Pro</div>
+                    <p class="project-desc">
+                        ספריית ויזואליזציה מתקדמת לנתונים עם תמיכה באנימציות, אינטראקטיביות וייצוא למגוון פורמטים.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">D3.js</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">WebGL</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🔐 SecureAuth</div>
+                    <p class="project-desc">
+                        מערכת אימות מאובטחת עם תמיכה ב-OAuth2, 2FA ושיטות הצפנה מתקדמות. קלה לשילוב בכל אפליקציה.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">Redis</span>
+                        <span class="tech-badge">JWT</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🤖 AIChat Assistant</div>
+                    <p class="project-desc">
+                        צ'אט בוט חכם עם יכולות עיבוד שפה טבעית, למידה מתמשכת ואינטגרציה עם מערכות ארגוניות.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">TensorFlow</span>
+                        <span class="tech-badge">NLP</span>
+                        <span class="tech-badge">REST API</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">📱 MobileKit</div>
+                    <p class="project-desc">
+                        ערכת פיתוח לאפליקציות מובייל היברידיות עם רכיבים מוכנים, אנימציות ותמיכה בפלטפורמות מרובות.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">Expo</span>
+                        <span class="tech-badge">Redux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2 class="section-title">בואו נדבר</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">
+                מעוניינים בשיתוף פעולה? יש לכם רעיון לפרויקט? נשמח לשמוע!
+            </p>
+            <a href="mailto:giamatamat13@gmail.com" class="contact-btn">📧 שלחו לנו מייל</a>
+            <a href="https://github.com/giamatamat13" class="contact-btn" target="_blank">🐙 GitHub</a>
+            <a href="https://giamat13.github.io/main-site/" class="contact-btn" target="_blank">🌐 אתר של Giamat</a>
+        </section>
     </div>
-  </main>
-  <footer>
-    <p>© 2025 Tamat & Giamat</p>
-  </footer>
 </body>
 </html>
